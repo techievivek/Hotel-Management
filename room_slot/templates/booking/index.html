@@ -1,14 +1,26 @@
 {% extends 'base/base.html' %}
+{%load static %}
 {%block content%}
+<div class="row">
+    <!-- <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+      </div> -->
+</div>
 <div class="row">
     <div class="container">
         <div class="col l4 m6 s12">
             <div class="card">
                 <div class="card-image">
-                    <img src="" alt="">
+                    <img src="{% static 'andrew-neel-B4rEJ09-Puo-unsplash.jpg'%}" alt="">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red white-text">2000</a>
                 </div>
                 <div class="card-content">
-Delux Room
+                    <span class="card-title blue-text">
+                        Single Bed Deluxe Room
+                    </span>
                 </div>
                 <div class="card-action">
                     <a href="">Book Now</a>

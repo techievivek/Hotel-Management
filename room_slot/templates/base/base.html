@@ -1,3 +1,4 @@
+ {%load static %}
  <!DOCTYPE html>
   <html>
     <head>
@@ -15,7 +16,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="">Home</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/login">Login</a></li>
+        <li><a href="/user/login">Login</a></li>
       </ul>
     </div>
   </nav>
@@ -32,9 +33,9 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Important Links</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/contact-us">Contact Us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/user/login">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -50,5 +51,18 @@
 			  crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.carousel.carousel-slider').carousel({
+          fullWidth: true,
+          indicator:true,
+          duration:100
+        });
+        $(".dropdown-trigger").dropdown();
+        $('.sidenav').sidenav();
+        $('.tabs').tabs();
+      });
+  
+    </script>
     </body>
   </html>
