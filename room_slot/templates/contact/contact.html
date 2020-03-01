@@ -1,0 +1,31 @@
+{% extends 'base/base.html'%}
+{% block content%}
+<div class="row">
+    <div class="col l6 offset-l3 m8 offset-m2 s12">
+    <div class="card-panel">
+        {% if message%}
+        <p class="green-text">{{message}}</p>
+        {%endif%}
+    <h4 class="center" style="font-family:Stylish">Contact Us...</h4>
+    <form action="/contact-us" method="POST">
+        {% csrf_token %}
+    <div class="input-field">
+    <input type="text" name="name" id="username">
+    <label for="username">Name</label>
+    </div>
+    <div class="input-field">
+    <input type="email" name="email" id="email" required>
+    <label for="username">Email</label>
+    </div>
+    <div class="input-field">
+              <textarea id="textarea1" class="materialize-textarea" name="message" data-length="1000"></textarea>
+              <label for="textarea1">Message</label>
+    </div>
+    <div class="center">
+    <input type="submit" value="submit" name="submit" class="btn red lighten-2">
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+{%endblock%}

@@ -1,69 +1,136 @@
 {% extends 'base/base.html' %}
 {% block content%}
 <div class="row">
+  <div class="col l6 offset-l3 m8 offset-m2 s12">
+    <div class="card-panel yellow lighten-2">
+      For <b>Room Manager</b> Signup/Login <a href="/user/login1">Click Here</a>
+    </div>
+  </div>
     <div class="col l6 offset-l3 m8 offset-m2 s12">
-        <div class="card-panel grey lighten-4">
+        <div class="card-panel ">
         <div class="center">
 </div>
-        <ul class="tabs grey lighten-4">
+        <ul class="tabs ">
        <li class="tab col s6"><a class="active black-text" href="#login" style="font-family:Stylish;font-size:1.3rem">Login</a></li>
        <li class="tab col s6"><a  class="black-text" href="#signup" style="font-family:Stylish;font-size:1.3rem">Sign Up</a></li>
-       
      </ul>
      <div class="row">
      <div id="login" class="col s12">
-         <h4 class="center" style="font-family:Stylish">Login to Continue.</h4>
-     <form class="col s12" method="POST" action="login_check.php?move_to=">
+         <h4 class="center" style="font-family:Stylish">Login as Customer</h4>
+     <form class="col s12" method="POST" action="/user/login">
      <div class="row">
        <div class="input-field col s12">
-         <i class="material-icons prefix">person_pin</i>
+         <i class="material-icons prefix red-text text-lighten-2">person_pin</i>
          <input type="text" name="username" id="username" required placeholder="Enter Username">
        </div>
        <div class="input-field col s12">
-         <i class="material-icons prefix">vpn_key</i>
+         <i class="material-icons prefix red-text text-lighten-2">vpn_key</i>
          <input type="password" name="password" id="password" required placeholder="Enter Password">
        </div>
-       <a class="waves-effect waves-teal btn-flat modal-trigger blue-text" href="#modal1"><i class="material-icons left red-text">sentiment_very_dissatisfied</i> Forgot Password?</a>
-   <input type="hidden" name="token_login_id" value="f94013fe57b0746ca944cbd5fe3cd54f">
-       <div class="center">
-           <input type="submit" value="Login" class="btn teal lighten-1" name="login">
+          <div class="center">
+           <input type="submit" value="Login" class="btn green btn-large" name="login">
        </div>
      </div>
    </form>
      </div>
    <div id="signup" class="col s12">
-       <h4 class="center" style="font-family:Stylish">Sign Up to get Started.</h4>
-       <div class="center">
-       <img id="blah" src="#" alt="Profile Image will appear here." />
-       </div>
-   <form class="col s12" enctype="multipart/form-data" action="login_check.php?move_to=" method="POST">
+       <h4 class="center" style="font-family:Stylish">Sign Up to start Booking Room</h4>
+   <form class="col s12" enctype="multipart/form-data" action="/user/signup" method="POST">
      <div class="row">
      <div class="input-field col s12">
-         <i class="material-icons prefix">email</i>
+         <i class="material-icons prefix red-text text-lighten-2">email</i>
          <input type="email" name="email" id="email" required class="validate" placeholder="Email">  
          <span class="helper-text" data-error="Wrong Email Format"></span>
        </div>
      <div class="input-field col s12">
-         <i class="material-icons prefix">person_pin</i>
+         <i class="material-icons prefix red-text text-lighten-2">person_pin</i>
          <input type="text" name="username" id="username" required placeholder="Username">
        </div>
        <div class="input-field col s12">
-         <i class="material-icons prefix">vpn_key</i>
+         <i class="material-icons prefix red-text text-lighten-2">vpn_key</i>
          <input type="password" name="password" id="password" required placeholder="Password">
        </div>
+       <div class="input-field col s12">
+        <i class="material-icons prefix red-text text-lighten-2">face</i>
+        <p style="margin-left: 15%;">
+          <label>
+            <input class="with-gap" name="gender" type="radio" checked />
+            <span>Male</span>
+          </label>
+          <label>
+            <input class="with-gap" name="gender" type="radio"  />
+            <span>Female</span>
+          </label>
+          <label>
+            <input class="with-gap" name="gender" type="radio" />
+            <span>Other</span>
+          </label>
+        </p>
+      </div>
+       <div class="input-field col s12">
+        <i class="material-icons prefix red-text text-lighten-2">phone</i>
+        <input type="text" name="phone" id="phone" required placeholder="10 digit phone no">
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix red-text text-lighten-2">home</i>
+        <textarea id="textarea2" class="materialize-textarea" data-length="200" name="address"></textarea>
+        <label for="textarea2">Enter Full Address</label>
+      </div>
+      <div class="input-field col s12">
+        <select name="state">
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+          <option value="Daman and Diu">Daman and Diu</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Lakshadweep">Lakshadweep</option>
+          <option value="Puducherry">Puducherry</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="West Bengal">West Bengal</option>
+        </select>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix red-text text-lighten-2">fiber_pin</i>
+        <input type="text" name="pin_code" id="pin_code" required placeholder="Pin code">
+      </div>
        <div class="file-field input-field col s12">
-     <div class="btn teal lighten-3">
+     <div class="btn red lighten-2">
        <span><i class="material-icons left black-text text-lighten-1">mood</i> Profile Pic</span>
-       <input type="file" name="profile_pic" onchange="readURL(this);">
+       <input type="file" name="profile_pic">
      </div>
      <div class="file-path-wrapper">
        <input class="file-path validate" type="text">
      </div>
    </div>
-       <input type="hidden" name="token_signup_id" value="1124f6e88561837516c70c934cc373e0">
-       <p class="green-text"><i class="material-icons left blue-text">notifications_active</i> We will send you new discussion's notification via mail.</p>
        <div class="center">
-       <input type="submit" value="Sign Up" name="signup" class="btn">
+       <input type="submit" value="Sign Up" name="signup" class="btn green btn-large">
        </div>
      </div>
    </form>
@@ -72,4 +139,12 @@
         </div>
     </div>
 </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+  $(document).ready(function()
+  {
+    $('select').select2({width: "100%"});
+  });
+</script>
 {%endblock%}

@@ -4,22 +4,40 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"> 
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
+    <style>
+      .dropdown-content
+      {
+top: 53px !important;
+width:200px !important;
+      }
+    </style>
     <body>
 <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Room Slots</a>
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo left" style="font-family: 'Cookie';font-size:3rem">Room Slots</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/user/login">Login</a></li>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Login/Register<i class="material-icons right">arrow_drop_down</i></a></li>
+  
       </ul>
     </div>
   </nav>
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="/user/login" class="blue-text"><i class="material-icons left red-text text-lighten-2">person</i> Customer</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="/manager/login1" class="blue-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Room Manager</a></li>
+  </ul>
 {% block content %}
 
 {%endblock %}
@@ -27,13 +45,13 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Room Slots</h5>
+                <h5 class="white-text" style="font-family: 'Cookie';">Room Slots</h5>
                 <p class="grey-text text-lighten-4">Get your room booked in seconds with amazing offers.</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Important Links</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
                   <li><a class="grey-text text-lighten-3" href="/contact-us">Contact Us</a></li>
                   <li><a class="grey-text text-lighten-3" href="/user/login">Login</a></li>
                 </ul>
@@ -46,9 +64,6 @@
             </div>
           </div>
         </footer>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			  crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
@@ -62,7 +77,6 @@
         $('.sidenav').sidenav();
         $('.tabs').tabs();
       });
-  
     </script>
     </body>
   </html>
