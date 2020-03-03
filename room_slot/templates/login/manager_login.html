@@ -8,6 +8,17 @@
   </div>
     <div class="col l6 offset-l3 m8 offset-m2 s12">
         <div class="card-panel ">
+             {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text'>{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
         <div class="center">
 </div>
         <ul class="tabs ">
@@ -28,6 +39,7 @@
          <i class="material-icons prefix red-text text-lighten-2">vpn_key</i>
          <input type="password" name="password" id="password" required placeholder="Enter Password">
        </div>
+       {% csrf_token %}
           <div class="center">
            <input type="submit" value="Login" class="btn green btn-large" name="login">
        </div>
@@ -68,9 +80,10 @@
           </label>
         </p>
       </div>
+      {% csrf_token %}
        <div class="input-field col s12">
         <i class="material-icons prefix red-text text-lighten-2">phone</i>
-        <input type="text" name="phone" id="phone" required placeholder="10 digit phone no">
+        <input type="text" name="phone_no" id="phone" required placeholder="10 digit phone no">
       </div>
        <div class="file-field input-field col s12">
      <div class="btn red lighten-2">

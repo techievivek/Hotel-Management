@@ -18,4 +18,6 @@ class RoomManager(models.Model):
     profile_pic=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None)
     phone_no=models.IntegerField()
     gender=models.CharField(max_length=20)
+    def __str__(self):
+        return "Details of Room Manager "+self.username
 
