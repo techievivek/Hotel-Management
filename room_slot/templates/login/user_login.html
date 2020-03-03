@@ -8,6 +8,17 @@
   </div>
     <div class="col l6 offset-l3 m8 offset-m2 s12">
         <div class="card-panel ">
+         {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text'>{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
         <div class="center">
 </div>
         <ul class="tabs ">
@@ -69,7 +80,7 @@
       </div>
        <div class="input-field col s12">
         <i class="material-icons prefix red-text text-lighten-2">phone</i>
-        <input type="text" name="phone" id="phone" required placeholder="10 digit phone no">
+        <input type="text" name="phone_no" id="phone" required placeholder="10 digit phone no">
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix red-text text-lighten-2">home</i>
@@ -116,6 +127,7 @@
           <option value="West Bengal">West Bengal</option>
         </select>
       </div>
+      {% csrf_token %}
       <div class="input-field col s12">
         <i class="material-icons prefix red-text text-lighten-2">fiber_pin</i>
         <input type="text" name="pin_code" id="pin_code" required placeholder="Pin code">
