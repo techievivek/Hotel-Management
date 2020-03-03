@@ -1,17 +1,118 @@
 {% extends 'base/base.html' %}
 {%load static %}
 {%block content%}
-<div class="row">
-    <!-- <div class="carousel carousel-slider">
-        <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
-      </div> -->
+<link href="https://fonts.googleapis.com/css?family=Ultra&display=swap" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet"> 
+<div class="row" >
+<div class="center">
+<h4 class="red-text text-lighten-2" style="font-family: 'Ultra', serif;margin: 4rem 0 4% 0;">Looking for a room, you are just at the right place</h4>
+</div>
+ <div class="row">
+    <div id="wrapper1" class="col s5 offset-s1 input-field">
+      <input type="date" id="start1" class="datepicker-start" />
+      <label for="start1">Start Date</label>
+    </div>
+    <div id="wrapper2" class="col s5 input-field">
+      <input type="date" id="end1" class="datepicker-end" />
+      <label for="end1">End Date</label>
+    </div>
+<div class="center">
+<a class="btn red darken-1" href="" style="padding: 25px;line-height:3px">Show me Rooms</a>
+</div>
+</div>
+</div>
+<div class="divider"></div>
+
+<div class="row" style="margin-top:3%">
+<div class="container">
+    <h3 class="center" style="font-family: 'Gloria Hallelujah', cursive;margin-bottom:7%;margin-top:5%">Comes with every booking</h3>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">local_airport</i><br>
+Airport Pick and Drop
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">free_breakfast</i><br>
+Free Breakfast
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">wifi</i><br>
+Free High speed wifi
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">live_tv</i><br>
+LED TV with Tata Sky
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">restaurant</i><br>
+24&#10006;7 Local Restaurant
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">accessibility</i><br>
+Free Gymnasium
+</div>
+</div>
+</div>
+
+</div>
 </div>
 <div class="row">
     <div class="container">
+    <h3 class="center" style="font-family: 'Gloria Hallelujah', cursive;margin-bottom:7%;margin-top:5%">Room for Every Size</h3>
         <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'andrew-neel-B4rEJ09-Puo-unsplash.jpg'%}" alt="">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red white-text">2000</a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title blue-text">
+                        Single Bed Deluxe Room
+                    </span>
+                </div>
+                <div class="card-action">
+                    <a href="">Book Now</a>
+                </div>
+            </div>
+        </div>
+             <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'andrew-neel-B4rEJ09-Puo-unsplash.jpg'%}" alt="">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red white-text">2000</a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title blue-text">
+                        Single Bed Deluxe Room
+                    </span>
+                </div>
+                <div class="card-action">
+                    <a href="">Book Now</a>
+                </div>
+            </div>
+        </div>
+             <div class="col l4 m6 s12">
             <div class="card">
                 <div class="card-image">
                     <img src="{% static 'andrew-neel-B4rEJ09-Puo-unsplash.jpg'%}" alt="">
@@ -29,4 +130,36 @@
         </div>
     </div>
 </div>
-{%endblock%}
+<script>
+// Accept datepicker-start or datepicker-end, as we need to initialize both anyway.
+$("input[class*='datepicker-']").pickadate({
+  selectMonths: false,
+  selectYears: 1,
+  format: 'dd/mmm/yyyy',    // Canadian date format, eh.
+  onSet: function(obj){
+    let thisPicker = $(this)[0].$node;    // Needed to hack to get the thing I was after.
+
+    // Check if this is the start date
+    let classes = thisPicker.attr("class");
+    if (classes === undefined || classes.length === 0 || classes.indexOf("datepicker-start") < 0){
+      return;
+    }
+
+    // .datepicker-start must be wrapped in a div.input-field element (in this example), and
+    // .datepicker-end must be in the next div.input-field.  Change selectors for your conditions.
+    let parent1 = thisPicker.closest("div.input-field");    // This picker's parent
+    let parent2 = parent1.next("div.input-field");          // Next picker's parent
+    let picker2 = parent2.find(".datepicker-end");          // Matching 'end' picker
+    
+    // Set end picker minimum date, or whatever you need.
+    if(obj.select){
+      let dt = new Date(obj.select);
+      picker2.pickadate('picker').set('min', dt);
+    }
+    if(obj.hasOwnProperty('clear')){
+      picker2.pickadate('picker').set('min', false);
+    }
+  }
+});
+</script>
+{% endblock %}
