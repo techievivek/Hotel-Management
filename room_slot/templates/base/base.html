@@ -25,8 +25,7 @@ width:200px !important;
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Login/Register<i class="material-icons right">arrow_drop_down</i></a></li>
-  
+        <li><a class="dropdown-button" href="#!" data-activates='dropdown1'>Login/Register<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
     </div>
   </nav>
@@ -62,7 +61,10 @@ width:200px !important;
           </div>
         </footer>
     <!-- Compiled and minified JavaScript -->
-    <script>
+    <script> $('.dropdown-button').dropdown({
+      hover:true
+}
+  );
     </script>
     </body>
   </html>

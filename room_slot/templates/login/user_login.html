@@ -62,23 +62,19 @@
          <i class="material-icons prefix red-text text-lighten-2">vpn_key</i>
          <input type="password" name="password" id="password" required placeholder="Password">
        </div>
-       <div class="input-field col s12">
-        <i class="material-icons prefix red-text text-lighten-2">face</i>
-        <p style="margin-left: 15%;">
-          <label>
-            <input class="with-gap" name="gender" type="radio" checked  value="Male"/>
-            <span>Male</span>
-          </label>
-          <label>
-            <input class="with-gap" name="gender" type="radio" value="Female" />
-            <span>Female</span>
-          </label>
-          <label>
-            <input class="with-gap" name="gender" type="radio" value="Others"/>
-            <span>Other</span>
-          </label>
-        </p>
-      </div>
+       &nbsp;&nbsp;<i class="material-icons red-text text-lighten-2 small" style="line-height: 2;
+vertical-align: middle;">face</i> &nbsp;&nbsp;<p style="display:inline">
+      <input class="with-gap" name="gender" type="radio" id="male" value="Male"  />
+      <label for="male">Male</label>
+    </p>
+     <p style="display:inline">
+      <input class="with-gap" name="gender" type="radio" id="female" value="Female" />
+      <label for="female">Female</label>
+    </p>
+     <p style="display:inline">
+      <input class="with-gap" name="gender" type="radio" id="others"  value="Others"/>
+      <label for="others">Others</label>
+    </p>
        <div class="input-field col s12">
         <i class="material-icons prefix red-text text-lighten-2">phone</i>
         <input type="text" name="phone_no" id="phone" required placeholder="10 digit phone no">
