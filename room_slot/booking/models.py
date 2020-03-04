@@ -14,10 +14,13 @@ class Rooms(models.Model):
     price=models.FloatField(default=1000.00)
     no_of_days_advance=models.IntegerField()
     start_date=models.DateField(auto_now=False, auto_now_add=False)
-    status=models.BooleanField(default=False)
+    room_image=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None)
+    status=models.BooleanField(default=True)
+'''
 class RoomImage(models.Model):
     room=models.ForeignKey(Rooms, on_delete=models.CASCADE)
     room_image=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None)
+'''
 class Booking(models.Model):
     room_no=models.ForeignKey(Rooms, on_delete=models.CASCADE)
     user_id=models.ForeignKey(Customer, on_delete=models.CASCADE)

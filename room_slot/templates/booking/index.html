@@ -194,7 +194,6 @@ $("input[class*='datepicker-']").pickadate({
 });
 </script>
 <script>
-var csrftoken = '{{ csrf_token }}';
 const room_btn=document.getElementById("show_me_rooms")
 room_btn.addEventListener("click",(e)=>
 {
@@ -204,7 +203,7 @@ endDate=$('.datepicker-end').val();
 //d = new Date(endDate);    
 sd=new Date(startDate)
 td=new Date()
-if (sd<td)
+if (sd<td || startDate.length==0 || endDate.length==0)
 {
 alert("Please choose a valid date")
 }
@@ -232,8 +231,7 @@ else
     element3.type="hidden"
     form.appendChild(element3);  
     document.body.appendChild(form);
-    form.submit(); 
-    console.log(form)
+   form.submit(); 
 }
 })
 </script>

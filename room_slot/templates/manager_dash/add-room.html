@@ -1,0 +1,65 @@
+{% extends 'base/base.html'%}
+{% block content%}
+    <div class="row">
+<form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Enter Room No" id="first_name" type="text" name="room_no">
+          <label for="first_name">Room No</label>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col s12">
+       <label>Room Type</label>
+  <select class="browser-default" name="room_type">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+      </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="price" id="price">
+          <label for="price">Price</label>
+        </div>
+      </div>
+      <div class="row">
+ <div class="file-field input-field col s12">
+     <div class="btn red lighten-2">
+       <span><i class="material-icons left black-text text-lighten-1">mood</i> Room Image</span>
+       <input type="file" name="room_image">
+     </div>
+     <div class="file-path-wrapper">
+       <input class="file-path validate" type="text">
+     </div>
+   </div>
+      
+      </div>
+         <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="no_of_days_advance" id="no_of_days_advance">
+          <label for="no_of_days_advance">No of days in advance</label>
+        </div>
+      </div>
+         <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="start_day" id="start_day" class="datepicker5">
+          <label for="start_day">From when room will be available for booking</label>
+        </div>
+      </div>
+    </form>
+    </div>
+    <script>
+     $('.datepicker5').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+    container: undefined, // ex. 'body' will append picker to body
+  });
+        
+    </script>
+{% endblock %}

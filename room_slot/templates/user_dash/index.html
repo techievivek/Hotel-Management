@@ -1,0 +1,54 @@
+{% extends 'base/base.html'%}
+{% block content%}
+    <div class="row">
+<div class="col l4 m4 s6">
+<div class="card-panel center">
+<h5>No of rooms occupied</h5>
+
+</div>
+</div>
+<div class="col l4 m4 s6">
+<div class="card-panel center">
+<h5>No of rooms to be updated</h5>
+
+</div>
+</div>
+<div class="col l4 m4 s6">
+<div class="card-panel center">
+<h5>Total room to manage</h5>
+
+</div>
+</div>
+<div class="col l8 offset-l2 m10 offset-m1 s12">
+<a class="btn red lighten-2" href="/add-room">Add Rooms</a>
+<h5>Room Status</h5>
+ <table class="highlight bordered">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+    </div>
+{% endblock %}
