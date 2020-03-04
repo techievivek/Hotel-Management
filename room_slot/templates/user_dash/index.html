@@ -1,6 +1,18 @@
 {% extends 'base/base.html'%}
 {% block content%}
-    <div class="row">
+    <div class="row" style="margin-top:2%">
+    <div class="center">
+        {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+ {% endfor %}
+ {% endif %}
+    </div>
+    <div class="center">
+<a class="btn red lighten-2" href="/">Book More Rooms</a>
+    </div>
 <div class="col l4 m4 s6">
 <div class="card-panel center">
 <h5>No of rooms occupied</h5>
@@ -20,8 +32,7 @@
 </div>
 </div>
 <div class="col l8 offset-l2 m10 offset-m1 s12">
-<a class="btn red lighten-2" href="/add-room">Add Rooms</a>
-<h5>Room Status</h5>
+<h3>Room Status</h3>
  <table class="highlight bordered">
         <thead>
           <tr>
