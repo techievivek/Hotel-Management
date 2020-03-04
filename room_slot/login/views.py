@@ -20,6 +20,7 @@ def user_login(request):
             password_hash=user.password
             res=check_password(password,password_hash)
             if res==1:
+                request.session['username'] = username
                 return render(request,'booking/index.html',{})
             else:
                 messages.warning(request,"Username or password is incorrect")
@@ -47,6 +48,7 @@ def manager_login(request):
             password_hash=user.password
             res=check_password(password,password_hash)
             if res==1:
+                request.session['username'] = username
                 return render(request,'booking/index.html',{})
             else:
                 messages.warning(request,"Username or password is incorrect")
@@ -130,3 +132,11 @@ def manager_signup(request):
     else:
         redirect('user_signup')
     return render(request,'login/manager_login.html',{})
+def logout(request):
+    if request.session.get('username', None):
+        del request.session['username']
+        return render(request,"login/logout.html",{})
+    else:
+        return render(request,"login/user_login.html",{})
+
+

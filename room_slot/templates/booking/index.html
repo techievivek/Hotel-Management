@@ -17,7 +17,7 @@
       <label for="end1">End Date</label>
     </div>
 <div class="center">
-<a class="btn red darken-1" href="" style="padding: 25px;line-height:3px">Show me Rooms</a>
+<a class="btn red darken-1" href="" style="padding: 25px;line-height:3px" id="show_me_rooms">Show me Rooms</a>
 </div>
 </div>
 </div>
@@ -92,6 +92,7 @@ Free Gymnasium
                     </span>
                 </div>
             </div>
+            {% csrf_token %}
         </div>
              <div class="col l4 m6 s12">
             <div class="card">
@@ -165,9 +166,9 @@ Room with View
 $("input[class*='datepicker-']").pickadate({
   selectMonths: false,
   selectYears: 1,
-  format: 'dd/mmm/yyyy',    // Canadian date format, eh.
+  format: 'dd/mmm/yyyy',
   onSet: function(obj){
-    let thisPicker = $(this)[0].$node;    // Needed to hack to get the thing I was after.
+    let thisPicker = $(this)[0].$node;
 
     // Check if this is the start date
     let classes = thisPicker.attr("class");
@@ -191,5 +192,49 @@ $("input[class*='datepicker-']").pickadate({
     }
   }
 });
+</script>
+<script>
+var csrftoken = '{{ csrf_token }}';
+const room_btn=document.getElementById("show_me_rooms")
+room_btn.addEventListener("click",(e)=>
+{
+e.preventDefault()
+startDate=$('.datepicker-start').val();
+endDate=$('.datepicker-end').val();
+//d = new Date(endDate);    
+sd=new Date(startDate)
+td=new Date()
+if (sd<td)
+{
+alert("Please choose a valid date")
+}
+else
+{
+     var form = document.createElement("form");
+    var element1 = document.createElement("input"); 
+    var element2 = document.createElement("input");  
+    var element3= document.createElement("input");  
+
+    form.method = "POST";
+    form.action = "/book";   
+
+    element1.value=startDate;
+    element1.name="start_date";
+    element1.type="date"
+    form.appendChild(element1);  
+
+   element2.value=endDate;
+    element2.name="end_date";
+    element2.type="date"
+    form.appendChild(element2);  
+     element3.value='{{csrf_token}}';
+    element3.name="csrfmiddlewaretoken";
+    element3.type="hidden"
+    form.appendChild(element3);  
+    document.body.appendChild(form);
+    form.submit(); 
+    console.log(form)
+}
+})
 </script>
 {% endblock %}
