@@ -14,7 +14,7 @@ class Rooms(models.Model):
     price=models.FloatField(default=1000.00)
     no_of_days_advance=models.IntegerField()
     start_date=models.DateField(auto_now=False, auto_now_add=False)
-    room_image=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None)
+    room_image=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None,default='0.jpeg')
     status=models.BooleanField(default=True)
 '''
 class RoomImage(models.Model):

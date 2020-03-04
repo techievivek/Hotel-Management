@@ -216,15 +216,15 @@ else
 
     form.method = "POST";
     form.action = "/book";   
-
-    element1.value=startDate;
+    
     element1.name="start_date";
-    element1.type="date"
+    element1.type="text"
+    element1.value=startDate;
     form.appendChild(element1);  
 
+ element2.name="end_date";
+    element2.type="text"
    element2.value=endDate;
-    element2.name="end_date";
-    element2.type="date"
     form.appendChild(element2);  
      element3.value='{{csrf_token}}';
     element3.name="csrfmiddlewaretoken";

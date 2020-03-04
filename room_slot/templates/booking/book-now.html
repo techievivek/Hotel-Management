@@ -1,0 +1,27 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Oregano&display=swap" rel="stylesheet">
+<div class="row">
+<div class="col l8 offset-l2 m10 offset-m1 s12">
+    <h3 class="center green-text" style="font-family: 'Oregano', cursive;margin-bottom:7%;margin-top:5%" >Click on the Confirm Booking to book your room...</h3>
+ <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{data.room_image.url}}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h4>{{data.room_type}}</h4>
+          <p><b>Stay Duration:</b> {{start}} to {{end}}</p>
+          <p><b>Room No: </b> {{data.room_no}}</p>
+          <p><b>Total Bill: </b> {{no_of_days}}*{{data.price}}={{bill}} rupees</p>
+          <p><b>Room Manager: </b>{{roomManager}}</p>
+        </div>
+        <div class="card-action">
+          <a href="/confirm-now-booking">Confirm Booking</a>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+{% endblock %}
