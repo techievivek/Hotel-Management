@@ -1,54 +1,65 @@
 {% extends 'base/base.html'%}
-{% block content%}
+{% block content%} 
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Shadows+Into+Light&display=swap" rel="stylesheet"> 
+
     <div class="row">
-<div class="col l4 m4 s6">
+<div class="col offset-l1 l4 offset-m1 m5 s6">
 <div class="card-panel center">
-<h5>No of rooms occupied</h5>
-
+<h5 style="font-family: 'Shadows Into Light', cursive;" class='blue-text'>Occupied Rooms Status</h5>
+<h3 style="font-family: 'Fredoka One', cursive;">
+{{booked}}
+</h3>
 </div>
 </div>
-<div class="col l4 m4 s6">
+<div class="col offset-l1 l4 m5 s6">
 <div class="card-panel center">
-<h5>No of rooms to be updated</h5>
-
-</div>
-</div>
-<div class="col l4 m4 s6">
-<div class="card-panel center">
-<h5>Total room to manage</h5>
-
+<h5 style="font-family: 'Shadows Into Light', cursive;" class='blue-text'>Total Rooms to manage</h5>
+<h3 style="font-family: 'Fredoka One', cursive;">
+{{room_data.count}}
+</h3>
 </div>
 </div>
 <div class="col l8 offset-l2 m10 offset-m1 s12">
-<a class="btn red lighten-2" href="/add-room">Add Rooms</a>
-<h5>Room Status</h5>
- <table class="highlight bordered">
-        <thead>
+<div class="center">
+<a class="btn green lighten-2" href="add-room/new">Add Rooms</a>
+</div>
+<h3 style="font-family: 'Fredoka One', cursive;" class="brown-text">Room Status</h3>
+{% if room_data %}
+<table class="highlight bordered responsive-table">
+        <thead class="red lighten-4">
           <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>Room No</th>
+              <th>Room Type</th>
+              <th>Price</th>
+              <th>Customer Name</th>
+              <th>Booked On</th>
+              <th>Booking Data</th>
+              <th>Edit</th>
+              <th>Delete</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+        {% for room in room_data%}
+                  <tr>
+            <td>{{room.room_no}}</td>
+            <td>{{room.room_type}}</td>
+            <td>{{room.price}}</td>
+            {% with data=room.booking_set.all.0 %}
+            <td>{{data.user_id.username}}</td>
+            <td>{{data.booked_on}}</th>
+            <td>{{data.start_day}} to {{data.end_day}}</td>
+            <td><a class="btn blue" href="">Edit</a></td>
+            <td><a class="btn red" href="">Delete</a></td>
+            {% endwith %}
           </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
+        {% endfor %}
         </tbody>
       </table>
+{% else %}
+<p>Soory no rooom has been added by you, please add a room now <a href="add-room/new">Here</a></p>
+{% endif %}
+
+ 
 </div>
     </div>
 {% endblock %}

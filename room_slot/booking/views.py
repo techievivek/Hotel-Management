@@ -60,6 +60,8 @@ def book_confirm(request):
     end_date=datetime.datetime.strptime(end_date, "%d/%b/%Y").date()
     data=Booking(room_no=room,start_day=start_date,end_day=end_date,amount=amount,user_id=user_id)
     data.save()
+    room.is_available=False
+    room.save()
     del request.session['start_date']
     del request.session['end_date']
     del request.session['bill']
@@ -68,6 +70,9 @@ def book_confirm(request):
     return redirect('user_dashboard')
 def cancel_room(request,id):
     data=Booking.objects.get(id=id)
+    room=data.room_no
+    room.is_available=True
+    room.save()
     data.delete()
     return HttpResponse("Booking Cancelled Successfully")
 

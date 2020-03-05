@@ -1,6 +1,9 @@
 {% extends 'base/base.html'%}
 {% block content%}
     <div class="row">
+<div class="col l8 offset-l2 m10 offset-m1 s12">
+<div class="card-panel">
+<div class="row">
 <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
@@ -44,21 +47,26 @@
       </div>
          <div class="row">
         <div class="input-field col s12">
-          <input type="text" name="start_day" id="start_day" class="datepicker5">
+          <input type="text" name="start_day" id="start_day" class="datepicker">
           <label for="start_day">From when room will be available for booking</label>
         </div>
       </div>
+      <div class="center">
+      <input type="submit" class="btn green btn-large" value="Add Room">
+      </div>
     </form>
+</div>
+</div>
+</div>
     </div>
     <script>
-     $('.datepicker5').pickadate({
+     $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
     today: 'Today',
     clear: 'Clear',
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
-    container: undefined, // ex. 'body' will append picker to body
   });
         
     </script>
