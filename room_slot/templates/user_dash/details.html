@@ -1,0 +1,25 @@
+{% extends 'base/base.html'%}
+{% block content%}
+<div class="row">
+<div class="col l6 offset-l3 m8 offset-m2 s12">
+<div class="card-panel">
+<div class="center">
+<img src="{{user.profile_pic.url }}" class="circle" style="width:100px; height:100px ">
+<div class="divider"></div>
+<b>Username</b>: {{user.username}} <br>
+<b>Email</b>: {{user.email}} <br>
+<b>Phone No</b>: {{user.phone_no}} <br>
+<b>Address</b>:{{user.address}} <br>
+<b>State</b>:{{user.state}} <br>
+<b>Pin Code</b>:{{user.pin_code}} <br>
+<b>Booked On</b>: {{booking_data.booked_on}} <br>
+<b>Start Day</b>:{{booking_data.start_day}} <br>
+<b>End Day</b>:{{booking_data.end_day}} <br>
+<b>Billing</b>:{{booking_data.amount}}<br>
+<a href="/manager/dashboard1/" class="btn blue">Go Back</a>
+
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -3,10 +3,22 @@
     <div class="row">
 <div class="col l8 offset-l2 m10 offset-m1 s12">
 <div class="card-panel">
+      {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text'>{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
 <div class="row">
-<form class="col s12">
+<form class="col s12" method="POST" action="/user/add-room/new/" enctype="multipart/form-data">
+{% csrf_token %}
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12">  
           <input placeholder="Enter Room No" id="first_name" type="text" name="room_no">
           <label for="first_name">Room No</label>
         </div>
@@ -15,9 +27,11 @@
       <div class="col s12">
        <label>Room Type</label>
   <select class="browser-default" name="room_type">
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
+    <option value="Single Room">Single Room</option>
+    <option value="Double Room">Double Room</option>
+    <option value="Deluxe Room">Deluxe Room</option>
+    <option value="Super Deluxe Room">Super Deluxe Room</option>
+
   </select>
       </div>
       </div>
@@ -30,7 +44,7 @@
       <div class="row">
  <div class="file-field input-field col s12">
      <div class="btn red lighten-2">
-       <span><i class="material-icons left black-text text-lighten-1">mood</i> Room Image</span>
+       <span><i class="material-icons left black-text text-lighten-1">image</i> Room Image</span>
        <input type="file" name="room_image">
      </div>
      <div class="file-path-wrapper">

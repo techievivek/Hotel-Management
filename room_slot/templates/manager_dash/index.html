@@ -3,6 +3,19 @@
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Shadows+Into+Light&display=swap" rel="stylesheet"> 
 
     <div class="row">
+    <div class="center" style="margin-top:2%">
+          {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text'>{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
+    </div>
 <div class="col offset-l1 l4 offset-m1 m5 s6">
 <div class="card-panel center">
 <h5 style="font-family: 'Shadows Into Light', cursive;" class='blue-text'>Occupied Rooms Status</h5>
@@ -21,9 +34,11 @@
 </div>
 <div class="col l8 offset-l2 m10 offset-m1 s12">
 <div class="center">
-<a class="btn green lighten-2" href="add-room/new">Add Rooms</a>
+<a class="btn green lighten-2" href="/user/add-room/new"">Add Rooms</a>
 </div>
 <h3 style="font-family: 'Fredoka One', cursive;" class="brown-text">Room Status</h3>
+<div id="message">
+</div>
 {% if room_data %}
 <table class="highlight bordered responsive-table">
         <thead class="red lighten-4">
@@ -45,21 +60,45 @@
             <td>{{room.room_type}}</td>
             <td>{{room.price}}</td>
             {% with data=room.booking_set.all.0 %}
-            <td>{{data.user_id.username}}</td>
+            <td><a href="/user/dashboard/details/{{data.user_id.id}}/{{data.id}}">{{data.user_id.username}}</a></td>
             <td>{{data.booked_on}}</th>
-            <td>{{data.start_day}} to {{data.end_day}}</td>
-            <td><a class="btn blue" href="">Edit</a></td>
-            <td><a class="btn red" href="">Delete</a></td>
+            <td>
+            {% if  room.is_available%}
+            Available
+            {% else %}
+            {{data.start_day}} to {{data.end_day}}
+            {% endif %}
+            </td>
+            <td><a class="btn blue" href="/user/add-room/update/{{room.room_no}}">Edit</a></td>
+            <td><a class="btn red cancel-btn" href="" id="{{room.id}}">Delete</a></td>
             {% endwith %}
           </tr>
         {% endfor %}
         </tbody>
       </table>
 {% else %}
-<p>Soory no rooom has been added by you, please add a room now <a href="add-room/new">Here</a></p>
+<p>Sorry no rooom has been added by you, please add a room now <a href="/user/add-room/new">Here</a></p>
 {% endif %}
-
- 
 </div>
     </div>
+     <script>
+    cancel_btn=document.querySelectorAll(".cancel-btn")
+    cancel_btn.forEach((data)=>{
+  data.addEventListener("click",(e)=>
+    {
+      e.preventDefault()
+      id=e.target.id
+   var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+ console.log(xhttp.responseText)
+       document.getElementById("message").innerHTML = "<div class='chip green white-text'>"+xhttp.responseText+"</div>";
+       window.setTimeout(function(){location.reload()},1000)
+    }
+};
+xhttp.open("GET", "/delete-room/"+id, true);
+xhttp.send();
+    })
+    })
+    </script>
 {% endblock %}

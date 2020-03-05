@@ -75,6 +75,15 @@ def cancel_room(request,id):
     room.save()
     data.delete()
     return HttpResponse("Booking Cancelled Successfully")
+def delete_room(request,id):
+    data=Rooms.objects.get(id=id)
+    manager=data.manager.username
+    if manager==request.session['username']:
+        data.delete()
+        return HttpResponse("You have deleted the room successfully")
+    else:
+        return HttpResponse("Invalid Request")
+
 
             
 

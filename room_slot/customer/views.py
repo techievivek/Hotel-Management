@@ -12,4 +12,11 @@ def dashboard(request):
       return render(request,"user_dash/index.html",{"data":booking_data,"count":counts,"available":available})
   else:
       return redirect("user_login")
-# Create your views here.
+def details(request,id,booking_id):
+    try:
+        booking_data=Booking.objects.get(id=booking_id)
+        user=Customer.objects.get(id=id)
+        return render(request,"user_dash/details.html",{"user":user,"booking_data":booking_data})
+    except:
+        return redirect("/manager/dashboard1/")
+

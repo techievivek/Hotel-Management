@@ -1,0 +1,41 @@
+{% extends 'base/base.html'%}
+{% block content%}
+    <div class="row">
+<div class="col l8 offset-l2 m10 offset-m1 s12">
+<div class="card-panel">
+<h4>Updating the Data for Room No: {{room.room_no}}</h4>
+      {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text'>{{messsage}}</div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text'>{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
+<div class="row">
+<form class="col s12" method="POST" action="/user/add-room/update/{{room.room_no}}/">
+{% csrf_token %}
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="price" id="price" value="{{room.price}}"> 
+          <label for="price">Price</label>
+        </div>
+      </div>
+         <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="no_of_days_advance" id="no_of_days_advance" value="{{room.no_of_days_advance}}">
+          <label for="no_of_days_advance">No of days in advance</label>
+        </div>
+      </div>
+      <div class="center">
+      <input type="submit" class="btn green btn-large" value="Update Room">
+      </div>
+    </form>
+</div>
+</div>
+</div>
+    </div>
+{% endblock %}
