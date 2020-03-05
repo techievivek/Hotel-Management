@@ -3,6 +3,7 @@ from .models import Contact
 from .models import Rooms,Booking
 from login.models import Customer
 from django.contrib import messages
+from django.http import HttpResponse
 import datetime
 def index(request):
     return render(request,'booking/index.html',{})
@@ -65,6 +66,10 @@ def book_confirm(request):
     del request.session['room_no']
     messages.info(request,"Room has been successfully booked")
     return redirect('user_dashboard')
+def cancel_room(request,id):
+    data=Booking.objects.get(id=id)
+    data.delete()
+    return HttpResponse("Booking Cancelled Successfully")
 
             
 

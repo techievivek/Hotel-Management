@@ -1,5 +1,7 @@
 {% extends 'base/base.html'%}
 {% block content%}
+
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Shadows+Into+Light&display=swap" rel="stylesheet"> 
     <div class="row" style="margin-top:2%">
     <div class="center">
         {% if messages %}
@@ -13,53 +15,78 @@
     <div class="center">
 <a class="btn red lighten-2" href="/">Book More Rooms</a>
     </div>
-<div class="col l4 m4 s6">
+<div class="col offset-l1 l4 offset-m1 m5 s6">
 <div class="card-panel center">
-<h5>No of rooms occupied</h5>
-
+<h5 style="font-family: 'Shadows Into Light', cursive;" class='blue-text'>No of active room booking</h5>
+<h3 style="font-family: 'Fredoka One', cursive;">{{ available }}</h3>
 </div>
 </div>
-<div class="col l4 m4 s6">
+<div class="col offset-l1 l4 m5 s6">
 <div class="card-panel center">
-<h5>No of rooms to be updated</h5>
-
-</div>
-</div>
-<div class="col l4 m4 s6">
-<div class="card-panel center">
-<h5>Total room to manage</h5>
-
+<h5 style="font-family: 'Shadows Into Light', cursive;" class='blue-text'>Rooms booked in past</h5>
+<h3 style="font-family: 'Fredoka One', cursive;">{{ count }}</h3>
 </div>
 </div>
 <div class="col l8 offset-l2 m10 offset-m1 s12">
-<h3>Room Status</h3>
- <table class="highlight bordered">
+<h3 style="font-family: 'Fredoka One', cursive;" class='brown-text'>Booking History</h3>
+<div id="message">
+</div>
+       {% if  data %}
+        <table class="highlight bordered">
         <thead>
           <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>Booking ID</th>
+              <th>Booked On</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Billing</th>
+              <th>Room Manager</th>
+              <th>Action</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+       {% for d in data %}
+                 <tr>
+            <td>{{d.id}}</td>
+            <td>{{d.booked_on}}</td>
+            <td>{{d.start_day}}</td>
+            <td>{{d.end_day}}</td>
+            <td>{{d.amount}}</td>
+            <td>{{d.room_no.manager.username}}</td>
+            {% if d.is_past_due %}
+            <td><a class="btn disabled">cancel Booking</a></td>
+            {% else %}
+            <td><a class="btn cancel-btn red" id="{{d.id}}">cancel Booking</a></td>
+            {% endif %}
           </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
+       {% endfor %}
+               </tbody>
       </table>
+       {% else %}
+<div col="l8 offset-l2 m10 offset-m1 s12">
+Sorry You haven't booked any room so far.
+</div>
+       {% endif %}
 </div>
     </div>
+    <script>
+    cancel_btn=document.querySelectorAll(".cancel-btn")
+    cancel_btn.forEach((data)=>{
+  data.addEventListener("click",(e)=>
+    { 
+      e.preventDefault()
+      id=e.target.id
+   var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+ console.log(xhttp.responseText)
+       document.getElementById("message").innerHTML = "<div class='chip green white-text'>"+xhttp.responseText+"</div>";
+       window.setTimeout(function(){location.reload()},1000)
+    }
+};
+xhttp.open("GET", "/cancel-room/"+id, true);
+xhttp.send();
+    })
+    })
+    </script>
 {% endblock %}

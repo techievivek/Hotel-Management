@@ -1,5 +1,6 @@
 from django.db import models
 from login.models import Customer,RoomManager
+from datetime import date
 class Contact(models.Model):
     name=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
@@ -27,5 +28,9 @@ class Booking(models.Model):
     start_day=models.DateField(auto_now=False, auto_now_add=False)
     end_day=models.DateField(auto_now=False, auto_now_add=False)
     amount=models.FloatField()
+    booked_on=models.DateTimeField(auto_now=True, auto_now_add=False)
+    @property
+    def is_past_due(self):
+        return date.today()>self.end_day
 
 
