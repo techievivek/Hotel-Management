@@ -7,7 +7,7 @@ Email- vray6640@gmail.com
  - HTML/CSS
  - [Materialize CSS](archives.materializecss.com/0.100.2)
  - Javascript( particularly AJAX, DOM)
- - GIT
+ - Git
  - Django
 # How to run the project
  - clone the repository.
