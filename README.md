@@ -19,6 +19,7 @@ Room slot booking django website for FOSSEE.
  - Start the development Server as `python manage.py runserver`
  - Visit `localhost:8000` in your browser to view the site live.
 # Features of the project
+ - Full responsive website(for both mobile and larger screens) based on google material design.
  - Login/Signup/Logout feature for both Customer and Room Manager.
  - Custom dashboard for both Customer and Room Manager.
  - Facility to add, delete, update rooms by Room Manager.
