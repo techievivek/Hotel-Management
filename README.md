@@ -11,13 +11,14 @@ Room slot booking django website for FOSSEE.
  - Django
 # How to run the project
  - clone the repository.
- - Install venv
- - Create a new virtual environment as `python -m venv demo_venv`
+ - Install virtualenv as `sudo pip3 install virtualenv`
+ - Create a new virtual environment as `python -m venv demo_venv` (`demo_venv` is the name of your virtual environment, you can name it anything)
  - Activate the newly created virtual environement `source demo_venv/bin/activate`
  - Install all the dependencies.
  - Traverse to the room_slot main directory as `cd room_slot`
  - Start the development Server as `python manage.py runserver`
  - Visit `localhost:8000` in your browser to view the site live.
+ - To deactivate virtual environment anytime use `deactivate`
 # Features of the project
  - Full responsive website(for both mobile and larger screens) based on google material design.
  - Login/Signup/Logout feature for both Customer and Room Manager.
