@@ -32,7 +32,7 @@ def book(request):
     else:
         return redirect('index')
 def book_now(request,id):
-    if request.session.get("username",None):
+    if request.session.get("username",None) and request.session.get("type",None)=='customer':
         if request.session.get("no_of_days",1):
             no_of_days=request.session['no_of_days']
             start_date=request.session['start_date']
@@ -47,7 +47,7 @@ def book_now(request,id):
             return redirect("index")
     else:
         next="book-now/"+id
-        return render(request,"login/user_login.html",{"next":next})
+        return redirect('user_login')
 def book_confirm(request):
     room_no=request.session['room_no']
     start_date=request.session['start_date']

@@ -4,6 +4,10 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.contrib import messages
 #mesages.info(request,'mail taken')
 def user_login(request):
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
+    if request.session.get('username',None) and request.session.get('type',None)=='manager':
+        return redirect('manager_dashboard')
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
@@ -21,6 +25,7 @@ def user_login(request):
             res=check_password(password,password_hash)
             if res==1:
                 request.session['username'] = username
+                request.session['type'] = 'customer'
                 return render(request,'booking/index.html',{})
             else:
                 messages.warning(request,"Username or password is incorrect")
@@ -32,6 +37,10 @@ def user_login(request):
         redirect('user_login')
     return render(request,'login/user_login.html',{})
 def manager_login(request):
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
+    if request.session.get('username',None) and request.session.get('type',None)=='manager':
+        return redirect('manager_dashboard')
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
@@ -49,6 +58,7 @@ def manager_login(request):
             res=check_password(password,password_hash)
             if res==1:
                 request.session['username'] = username
+                request.session['type'] = 'manager'
                 return render(request,'booking/index.html',{})
             else:
                 messages.warning(request,"Username or password is incorrect")
@@ -60,6 +70,10 @@ def manager_login(request):
         redirect('manager_login')
     return render(request,'login/manager_login.html',{})
 def user_signup(request):
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
+    if request.session.get('username',None) and request.session.get('type',None)=='manager':
+        return redirect('manager_dashboard')
     if request.method=="POST":
         username=request.POST['username']
         email=request.POST['email']
@@ -98,6 +112,10 @@ def user_signup(request):
         redirect('user_signup')
     return render(request,'login/user_login.html',{})
 def manager_signup(request):
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
+    if request.session.get('username',None) and request.session.get('type',None)=='manager':
+        return redirect('manager_dashboard')
     if request.method=="POST":
         username=request.POST['username']
         email=request.POST['email']
@@ -135,6 +153,7 @@ def manager_signup(request):
 def logout(request):
     if request.session.get('username', None):
         del request.session['username']
+        del request.session['type']
         return render(request,"login/logout.html",{})
     else:
         return render(request,"login/user_login.html",{})

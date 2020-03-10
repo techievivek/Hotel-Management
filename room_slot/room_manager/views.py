@@ -5,7 +5,11 @@ from datetime import date
 from django.contrib import messages
 import datetime
 def dashboard(request):
-  if request.session.get("username",None):
+  if not request.session.get('username',None):
+      return redirect('manager_login')
+  if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
+  if request.session.get('username',None) and request.session.get('type',None)=='manager':
       username=request.session['username']
       data=RoomManager.objects.get(username=username)
       room_data=data.rooms_set.all()
@@ -15,6 +19,10 @@ def dashboard(request):
   else:
       return redirect("manager_login")
 def add_room(request):
+    if not request.session.get('username',None):
+      return redirect('manager_login')
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
     if request.method=="GET":
         return render(request,"manager_dash/add-room.html",{})
     else:
@@ -50,6 +58,10 @@ def add_room(request):
             else:
                 return redirect('/user/add-room/new/')
 def update_room(request,room_no):
+    if not request.session.get('username',None):
+      return redirect('manager_login')
+    if request.session.get('username',None) and request.session.get('type',None)=='customer':
+        return redirect('user_dashboard')
     room=Rooms.objects.get(room_no=room_no)
     if request.method=="GET":
         return render(request,"manager_dash/edit-room.html",{"room":room})

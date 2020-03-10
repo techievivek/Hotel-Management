@@ -15,7 +15,7 @@
       .dropdown-content
       {
 top: 53px !important;
-width:200px !important;
+width:190px !important;
       }
     </style>
     <body>
@@ -30,10 +30,7 @@ width:200px !important;
         {% if not request.session.username %}
         <li><a class="dropdown-button" href="#!" data-activates='dropdown1'>Login/Register<i class="material-icons right">arrow_drop_down</i></a></li>
      {% else %}
-     {% if request.session.username %}
-        <li><a href="/user/dashboard">Dashboard</a></li>
-     {% endif %}
-        <li><a href="/logout">Logout</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates='dropdown2'>Account<i class="material-icons right">arrow_drop_down</i></a></li>
      {% endif %}
       </ul>
     </div>
@@ -53,9 +50,11 @@ width:200px !important;
     <li class="divider" tabindex="-1"></li>
     <li><a href="/manager/login1" class="blue-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Room Manager</a></li>
   {% else %}
-     {% if request.session.username %}
+   {% if request.session.type == 'customer' %}
         <li><a href="/user/dashboard"><i class="material-icons left red-text text-lighten-2">dashboard</i> Dashboard</a></li>
-     {% endif %}
+                  {% else %}
+        <li><a href="/manager/dashboard1"><i class="material-icons left red-text text-lighten-2">dashboard</i> Dashboard</a></li>         
+                  {% endif %}
         <li><a href="/logout"><i class="material-icons left red-text text-lighten-2">exit_to_app</i> Logout</a></li>
      {% endif %}
               </ul>
@@ -69,6 +68,14 @@ width:200px !important;
     <li class="divider" tabindex="-1"></li>
     <li><a href="/manager/login1" class="blue-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Room Manager</a></li>
   </ul>
+    <ul id='dropdown2' class='dropdown-content'>
+     {% if request.session.type == 'customer' %}
+       <li><a href="/user/dashboard"> <i class="material-icons left red-text text-lighten-2">dashboard</i>Dashboard</a></li>
+                  {% else %}
+       <li><a href="/manager/dashboard1"> <i class="material-icons left red-text text-lighten-2">dashboard</i>Dashboard</a></li>    
+                  {% endif %}
+        <li><a href="/logout"> <i class="material-icons left red-text text-lighten-2">exit_to_app</i>Logout</a></li>
+    </ul>
 {% block content %}
 
 {%endblock %}
@@ -85,7 +92,11 @@ width:200px !important;
                   <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
                   <li><a class="grey-text text-lighten-3" href="/contact-us">Contact Us</a></li>
                   {% if not request.session.username %}
-                  <li><a class="grey-text text-lighten-3" href="/user/login">Login</a></li>
+                  {% if request.session.type == 'customer' %}
+                  <li><a class="grey-text text-lighten-3" href="/user/login">Customer</a></li>
+                  {% else %}
+                  <li><a class="grey-text text-lighten-3" href="/manager/login1">Room Manager</a></li>
+                  {% endif %}
                   {% else %}
                   <li><a class="grey-text text-lighten-3" href="/logout">Logout</a></li>
                   {% endif %}
