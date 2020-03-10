@@ -21,7 +21,9 @@ width:200px !important;
     <body>
 <nav>
     <div class="nav-wrapper container">
-      <a href="/" class="brand-logo left" style="font-family: 'Cookie';font-size:3rem">Room Slots</a>
+      <a href="/" class="brand-logo center" style="font-family: 'Cookie';font-size:2rem"><i class="material-icons" style="font-size:2rem">hotel</i>Room Slotter </a>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+     
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
@@ -33,6 +35,29 @@ width:200px !important;
       </ul>
     </div>
   </nav>
+    <ul id="slide-out" class="side-nav">
+    
+        <li><a href="/">Home</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li style="margin-left:18px">
+            <a class="collapsible-header">Account<i class="material-icons right">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+               {% if not request.session.username %}
+      <li><a href="/user/login" class="blue-text"><i class="material-icons left red-text text-lighten-2">person</i> Customer</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="/manager/login1" class="blue-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Room Manager</a></li>
+  {% else %}
+        <li><a href="/logout">Logout</a></li>
+     {% endif %}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+  </ul>
   <ul id='dropdown1' class='dropdown-content'>
     <li><a href="/user/login" class="blue-text"><i class="material-icons left red-text text-lighten-2">person</i> Customer</a></li>
     <li class="divider" tabindex="-1"></li>
@@ -69,7 +94,9 @@ width:200px !important;
           </div>
         </footer>
     <!-- Compiled and minified JavaScript -->
-    <script> $('.dropdown-button').dropdown({
+    <script> 
+      $(".button-collapse").sideNav();
+    $('.dropdown-button').dropdown({
       hover:true
 }
   );
