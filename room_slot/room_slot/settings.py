@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'booking',
     'login',
     'room_manager',
-    'customer'
+    'customer',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -24,6 +24,7 @@ urlpatterns = [
     path('user/',include('login.urls')),
     path('manager/',include('login.urls')),
     path('logout',views.logout,name='logout'),
+    path('api/',include('api.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
