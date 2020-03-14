@@ -10,7 +10,7 @@ class Customer(models.Model):
     state=models.CharField(max_length=30,blank=True)
     pin_code=models.IntegerField(blank=True)
     def __str__(self):
-        return "Details of Customer "+self.username
+        return "Customer: "+self.username
 class RoomManager(models.Model):
     username=models.CharField(max_length=100)
     password=models.CharField(max_length=100)
@@ -19,5 +19,5 @@ class RoomManager(models.Model):
     phone_no=models.CharField(max_length=50)
     gender=models.CharField(max_length=20)
     def __str__(self):
-        return "Details of Room Manager "+self.username
+        return "Room Manager: "+self.username
 

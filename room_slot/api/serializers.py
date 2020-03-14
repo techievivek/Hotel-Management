@@ -8,8 +8,8 @@ class UserSerializer(serializers.ModelSerializer):
 class RoomsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rooms
-        fields = ['id','username', 'password', 'email', 'state','pin_code','address','profile_pic']
+        fields = ['id','manager', 'room_no', 'room_type', 'is_available','price','no_of_days_advance','start_date','room_image']
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = ['id','username', 'password', 'email', 'state','pin_code','address','profile_pic']
+        fields = ['id','room_no', 'user_id', 'start_day', 'end_day','amount','booked_on']
