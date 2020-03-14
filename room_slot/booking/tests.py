@@ -1,9 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase,Client
 from .models import Rooms
 from .models import Booking
 from login.models import Customer, RoomManager
 import datetime
-
+from django.urls import reverse
 class RoomsTestCases(TestCase):
     def setUp(self):
         RoomManager.objects.create(username='vivek')
@@ -54,4 +54,11 @@ class BookingTestCases(TestCase):
     def test_booking_roomManager(self):
         booking = Booking.objects.get(amount=5000)
         self.assertEqual(booking.room_no.manager.username, 'rahul')
-    
+class IndexPageViewTest(TestCase):
+    def setUp(self):
+        self.client=Client()
+        self.index_url=reverse('index')
+    def test_index_view(self):
+        response=self.client.get(self.index_url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,'booking/index.html')
