@@ -7,8 +7,8 @@ class Customer(models.Model):
     profile_pic=models.ImageField(upload_to="media", height_field=None, width_field=None, max_length=None,blank=True)
     phone_no=models.CharField(max_length=50)
     address=models.TextField()
-    state=models.CharField(max_length=30)
-    pin_code=models.IntegerField()
+    state=models.CharField(max_length=30,blank=True)
+    pin_code=models.IntegerField(blank=True)
     def __str__(self):
         return "Details of Customer "+self.username
 class RoomManager(models.Model):
