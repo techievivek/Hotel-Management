@@ -1,8 +1,5 @@
 # RoomSlotter Django App for FOSSEE
 Room slot booking django website for FOSSEE.
-# Participant Details
- - Username- vivek_virus 
- - Email- vray6640@gmail.com
 # Technology Used
  - HTML/CSS
  - [Materialize CSS](archives.materializecss.com/0.100.2)
