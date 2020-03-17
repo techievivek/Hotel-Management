@@ -1,5 +1,5 @@
-# RoomSlotter Django App for FOSSEE
-Room slot booking django website for FOSSEE.
+# Hotel Management Django App
+Hotel room booking and management app in Django(Python).
 # Technology Used
  - HTML/CSS
  - [Materialize CSS](archives.materializecss.com/0.100.2)
@@ -7,8 +7,8 @@ Room slot booking django website for FOSSEE.
  - Git
  - Django
 # How to run the project
- - clone the repository as `git clone https://github.com/techievivek/room-slot-django-fossee.git room_slotter`
- - Move to newly created git directory as `cd room_slotter`
+ - clone the repository.
+ - Move to newly created git directory as `cd Hotel-Management`
  - Install virtualenv as `sudo pip3 install virtualenv`
  - Create a new virtual environment as `python3 -m venv demo_venv` (`demo_venv` is the name of your virtual environment, you can name it anything)
  - Activate the newly created virtual environement `source demo_venv/bin/activate`
