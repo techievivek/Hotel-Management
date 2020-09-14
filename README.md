@@ -1,14 +1,16 @@
 # Hotel Management Django App
 Hotel room booking and management app in Django(Python).
+
 # Screenshot
 <p float="left">
-<img src="hm1.png" width="300" height="150">
- <img src="hm2.png" width="300" height="150">
- <img src="h,3.png" width="300" height="150">
- <img src="hm4.png" width="300" height="150">
- <img src="hm5.png" width="300" height="150">
- <img src="hm6.png" width="300" height="150">
+ <img src="hm1.png" width="300" height="150 "/>
+ <img src="hm2.png" width="300" height="150" />
+ <img src="h,3.png" width="300" height="150" />
+ <img src="hm4.png" width="300" height="150" />
+ <img src="hm5.png" width="300" height="150" />
+ <img src="hm6.png" width="300" height="150" /> 
 </p>
+
 # Technology Used
  - HTML/CSS
  - [Materialize CSS](archives.materializecss.com/0.100.2)
