@@ -1,6 +1,12 @@
 # Hotel Management Django App
 Hotel room booking and management app in Django(Python).
 
+# Features
+- Material design based UI.
+- Login and Signup functionality.
+- Customers can book room based on availability.
+- See the booking history and edit order from the dashboard.
+
 # Screenshot
 <p float="left">
  <img src="hm1.png" width="300" height="150 "/>
